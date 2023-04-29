@@ -40,9 +40,9 @@ export default function Main() {
   }, [items])
 
 
-  if (loading) {
-    return <div>Loading...</div>
-  }
+  // if (loading) {
+  //   return <div>Loading...</div>
+  // }
 
   return (
 

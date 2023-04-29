@@ -44,5 +44,17 @@ router.patch('/:id', (req, res) => __awaiter(this, void 0, void 0, function* () 
         res.status(400).send(e);
     }
 }));
+router.delete('/:id', (req, res) => __awaiter(this, void 0, void 0, function* () {
+    try {
+        const deletedItem = yield Task.findByIdAndDelete(req.params.id);
+        if (!deletedItem) {
+            return res.status(404).send({ error: 'Item not found' });
+        }
+        res.send({ message: 'Item deleted successfully' });
+    }
+    catch (e) {
+        res.status(500).send({ error: e.message });
+    }
+}));
 module.exports = router;
 //# sourceMappingURL=task.js.map

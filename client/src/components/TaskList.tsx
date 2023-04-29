@@ -32,6 +32,24 @@ export default function TaskList() {
     setItems(updatedItems);
   };
 
+  const onDelete = (id: string) => {
+    console.log("Item deleted with id: ", id);
+    let itemComplete = false;
+
+    const updatedItems = items.filter((item) => {
+    
+      return item._id !== id
+    });
+
+    axios.delete(`${process.env.REACT_APP_BACKEND_URI}/tasks/${id}`)
+    .then((res) => {
+      console.log("Item updated on backend");
+    }).catch((e) => {
+      console.log("Some error occured");
+    })
+    setItems(updatedItems);
+  };
+
   return (
     <div className="w-4/5 h-48 overflow-y-auto mx-auto">
       <div className="flex flex-col w-100 h-auto bg-white border-2 rounded-md">
@@ -46,6 +64,7 @@ export default function TaskList() {
               name={item.task}
               completed={item.completed}
               onClick={onClick}
+              onDelete={onDelete}
             />
           );
         })}
