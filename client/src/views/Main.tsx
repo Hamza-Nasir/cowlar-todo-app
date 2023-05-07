@@ -54,7 +54,7 @@ export default function Main() {
       />
       <ItemsContext.Provider value={{ items, setItems }}>
         <div className="flex w-screen h-screen">
-          <div className="w-1/3 h-2/3 m-auto bg-[rgba(0,0,0 ,0.5)] opacity-75">
+          <div className="w-11/12 h-2/3 m-auto bg-[rgba(0,0,0 ,0.5)] opacity-75 md:w-1/3">
             <img
               src={avatar}
               className="w-28 h-28 border-2 border-yellow-600 rounded-full mx-auto my-10 shadow-md"

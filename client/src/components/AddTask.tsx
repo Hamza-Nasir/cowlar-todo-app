@@ -47,10 +47,10 @@ export default function AddTask() {
 
   return (
     <>
-      <div className="flex h-10 mt-12 justify-center ">
+      <div className="flex flex-col h-24 mt-12 justify-center md:flex md:flex-row md:h-10">
       <input
         type="text"
-        className="w-3/5 h-full text-black text-center rounded-md mr-2" 
+        className="w-4/5 h-full mx-auto text-black text-center rounded-md mb-2 mt-2 md:mb-0 md:mr-2 md:mt-0" 
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           setValue(e.target.value);
         }}
@@ -60,7 +60,7 @@ export default function AddTask() {
           }
         }}
       ></input>
-      <button onClick={addItem} className="bg-white border-1 px-10 border-black rounded-md">
+      <button onClick={addItem} className="bg-white w-4/5 h-full mx-auto border-1 px-10 border-black rounded-md md:w-auto">
         Add
       </button>
 
