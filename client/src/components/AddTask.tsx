@@ -25,8 +25,12 @@ export default function AddTask() {
             completedTime: res.data.completedTime,
           }
         ])
+
       } catch (e) {
         console.log(e);
+      } finally {
+        setValue("");
+        console.log("Cleared Value: ", value);
       }
       
 
@@ -51,12 +55,14 @@ export default function AddTask() {
       <input
         type="text"
         className="w-4/5 h-full mx-auto text-black text-center rounded-md mb-2 mt-2 md:mb-0 md:mr-2 md:mt-0" 
+        value={value}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           setValue(e.target.value);
         }}
         onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
           if (e.key === "Enter") {
             addItem();
+
           }
         }}
       ></input>

@@ -9,13 +9,11 @@ export default function DropDown() {
   const [image, setImage] = useState(down_arrow);
 
   const onClick = () => {
-    console.log("Drop down clicked!");
     setOpened(() => {
       return !opened;
     });
   };
 
-  console.log("Opened: ", opened);
 
   return (
     <>

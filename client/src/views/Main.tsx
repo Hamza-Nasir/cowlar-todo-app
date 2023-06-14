@@ -20,11 +20,9 @@ export default function Main() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log(`${process.env.REACT_APP_BACKEND_URI}/tasks`)
 
     axios.get(`${process.env.REACT_APP_BACKEND_URI}/tasks`)
     .then(res => {
-      console.log("\n\nResponse: ", res.data, "\n\n");
 
       setItems(res.data);
       setLoading(false);
@@ -34,10 +32,6 @@ export default function Main() {
     })
 
   }, [])
-
-  useEffect(() => {
-    console.log(items);
-  }, [items])
 
 
   // if (loading) {
