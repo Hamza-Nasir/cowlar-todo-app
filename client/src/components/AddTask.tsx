@@ -3,6 +3,8 @@ import DropDown from "./DropDown";
 import { ItemsContext } from '../contexts/ItemsContext';
 import axios from 'axios'
 
+import { createTask } from '../services/apiService'
+
 export default function AddTask() {
   
   const { items, setItems } = useContext(ItemsContext);
@@ -11,9 +13,11 @@ export default function AddTask() {
   const addItem = async () => {
     if (value.trim() !== "") {
       try {
-        const res = await axios.post(`${process.env.REACT_APP_BACKEND_URI}/tasks/`, {
-          task: value,
-        })
+        // const res = await axios.post(`${process.env.REACT_APP_BACKEND_URI}/tasks/`, {
+        //   task: value,
+        // })
+
+        const res = await createTask(value);
   
         setItems(prevItems => [
           ...prevItems,
@@ -22,7 +26,7 @@ export default function AddTask() {
             task: value,
             completed: false,
             creationTime: res.data.creationTime,
-            completedTime: res.data.completedTime,
+            completionTime: res.data.completionTime,
           }
         ])
 

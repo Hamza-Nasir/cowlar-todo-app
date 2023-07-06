@@ -1,0 +1,18 @@
+Task Review
+- No compile/run time errors
+- UI is clean but UX could be improved a bit
+- Functionality is working as expected.
+- Dockerization is done partially, need to implement the Docker-compose file as well
+
+Some of the shortcomings have been identified below that need to be focused and fixed. 
+Make sure to test your app before pushing it to the repository.
+
+Web App
+    - Use a config file together with .env file for app settings etc and push a sample.env file to your repo
+    - Use toats for success/failure feedback to user and loaders for long running processes, data load
+    - Good to have task states (Pending, Completed) with date/time visible for each task
+    - Encapsulate API communication into a separate service with respect to a domain area e.g todo, user etc
+API
+    - Encapsulate business logic (creating tasks etc) into separate service instead of embedding it inside controllers/routes
+    - Write unit tests using a separate test db for unit tests
+    - Use a source code linter, e.g eslint with prettier and provide scripts

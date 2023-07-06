@@ -5,7 +5,7 @@ type Item = {
   task: string;
   completed: boolean;
   creationTime: Date;
-  completedTime: Date;
+  completionTime: Date;
 };
 
 type ItemsContextType = {

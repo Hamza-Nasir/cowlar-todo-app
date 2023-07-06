@@ -1,16 +1,21 @@
 import React, { useState } from "react";
 import options from "../media/images/options.png";
+import { StringLiteral } from "typescript";
 
 interface taskProps {
   id: string;
   name: string;
   completed: boolean;
+  completionTime: Date;
   onClick: Function;
   onDelete: Function;
 }
 
-export default function Task({ id, name, completed, onClick, onDelete }: taskProps) {
+export default function Task({ id, name, completed, completionTime, onClick, onDelete }: taskProps) {
   const [openSettings, setOpenSettings] = useState(false);
+  const completeDate = new Date(completionTime);
+
+  console.log(typeof(completionTime));
 
   return (
     <>
@@ -34,9 +39,17 @@ export default function Task({ id, name, completed, onClick, onDelete }: taskPro
           </div>
         </div>
         <p>{name}</p>
+        
+        { completed && (
+          <p
+            className="h-6 xs:bg-red-100 my-auto ml-auto"
+
+          >{`${completeDate.getDate()}/${completeDate.getMonth()}/${completeDate.getFullYear()}`}</p>
+        ) }
+
         <img
           src={options}
-          className="h-6 my-auto ml-auto hover:cursor-pointer" 
+          className="h-6 my-auto ml-4 md:ml-auto hover:cursor-pointer" 
           onClick={() => {
             setOpenSettings(!openSettings);
           }}

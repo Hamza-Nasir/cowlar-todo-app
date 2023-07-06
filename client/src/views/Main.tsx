@@ -5,13 +5,14 @@ import background from "../media/images/background.jpg";
 import avatar from "../media/images/avatar.jpg";
 import AddTask from "../components/AddTask";
 import DropDown from "../components/DropDown";
+import { getTasks } from "../services/apiService";
 
 interface Item {
   _id: string;
   task: string;
   completed: boolean;
   creationTime: Date;
-  completedTime: Date;
+  completionTime: Date;
 }
 
 export default function Main() {
@@ -21,15 +22,28 @@ export default function Main() {
 
   useEffect(() => {
 
-    axios.get(`${process.env.REACT_APP_BACKEND_URI}/tasks`)
-    .then(res => {
+    async function getAllTasks () {
+       // axios.get(`${process.env.REACT_APP_BACKEND_URI}/tasks`)
+      // const res = await getTasks
+      //   .then(res => {
 
-      setItems(res.data);
-      setLoading(false);
-    })
-    .catch(err => {
-      console.log(err);
-    })
+      //     setItems(res.data);
+      //     setLoading(false);
+      //   })
+      //   .catch(err => {
+      //     console.log(err);
+      //   })
+      try {
+        const res = await getTasks();
+
+        setItems(res);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    getAllTasks();
 
   }, [])
 
